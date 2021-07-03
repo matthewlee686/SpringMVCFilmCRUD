@@ -22,13 +22,14 @@
 		Enter Film Query Here:
 		<input type="text" name="search" size="25"/> 
 		<input type="submit" value="Get Film Info" />
+	<br>
+	<br>
+	<form action="AddFilm.do" method="GET">
+		Enter Film Query Here:
+		<input type="text" name="add" size="25"/> 
+		<input type="submit" value="Add Film" />
 	</form> 
-	
-	<!-- Add Link for Delete Film -->
-<p><a href="deleteFilm.html">Delete a Film</a></p>
-	
-	<!-- Add Link for Edit Film Info-->
-<p><a href="editFilm.html">Edit a Film</a></p>
+
 
 </body>
 </html>
