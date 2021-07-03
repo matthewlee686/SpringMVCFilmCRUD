@@ -15,6 +15,8 @@ Actors should show with this
 
 -->
 
+${film.title}
+
 	<!-- Link for Delete Film -->
 <p><a href="deleteFilm.html">Delete the Film</a></p>
 	

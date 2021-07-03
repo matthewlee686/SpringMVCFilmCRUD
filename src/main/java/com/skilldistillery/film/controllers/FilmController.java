@@ -1,5 +1,7 @@
 package com.skilldistillery.film.controllers;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,14 +10,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.FilmDAO;
+import com.skilldistillery.film.entities.Film;
 
 @Controller
 public class FilmController {
 	
-	//MAKE SURE TO UNCOMMENT
 	//	TODO: 
 	@Autowired
-	FilmDAO filmDAO;
+	private FilmDAO filmDAO;
+	
+	public void setFilmDAO(FilmDAO filmDAO) {
+		this.filmDAO = filmDAO; 
+	}
 
 	@RequestMapping(path = {"/", "home.do"})
 	public String index() {
@@ -28,13 +34,22 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView(); 
 		
 		//Instance new Film and Add to mv.addObject to map to .jsp File
+		try {
+			Film film = filmDAO.findFilmById(filmId);
+			mv.addObject("film", film);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		//Set View for .jsp File
-//		mv.setViewName(//.jsp file here);
+		mv.setViewName("WEB-INF/filmResults.jsp");
 		
 		return mv;
 	}
+	
+	
 	
 	//Get Film by Search
 		//path = "GetFilmByQuerySearch.do"
