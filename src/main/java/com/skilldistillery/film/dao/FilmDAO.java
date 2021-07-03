@@ -26,6 +26,7 @@ public class FilmDAO implements FilmAccessor {
 		}
 	}
 
+	
 	@Override
 	public Film findFilmById(int filmId) throws SQLException {
 		Film film = new Film();
@@ -210,7 +211,35 @@ public class FilmDAO implements FilmAccessor {
 			st.setInt(1, filmID);
 			
 			int uc = st.executeUpdate();
-			System.out.println(uc + " film record deleted.");
+			if (uc != 1) {
+				System.err.println("Record could not be deleted!");
+				conn.rollback();
+			}
+			else {
+				System.out.println("Record has been deleted.");
+			}
+			
+			conn.commit();
+			st.close();
+			conn.close();
+		} catch (SQLException e) {
+			conn.rollback();
+			System.err.println("Record could not be deleted!");
+			e.printStackTrace();
+		}
+	}
+	public void deleteFilmByKeyword(String keyword) throws SQLException {
+		String sql = "DELETE FROM film WHERE film.title LIKE ? OR film.description LIKE ?";
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // Start transaction
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, keyword);
+			st.setString(2, keyword);
+			
+			int uc = st.executeUpdate();
 			if (uc != 1) {
 				System.err.println("Record could not be deleted!");
 				conn.rollback();
@@ -251,7 +280,6 @@ public class FilmDAO implements FilmAccessor {
 			st.setInt(9, filmID);
 			
 			int uc = st.executeUpdate();
-			System.out.println(uc + " film record updated.");
 			if (uc != 1) {
 				System.err.println("Record could not be updated!");
 				conn.rollback();
@@ -265,7 +293,48 @@ public class FilmDAO implements FilmAccessor {
 			conn.close();
 		} catch (SQLException e) {
 			conn.rollback();
-			System.err.println("Record could not be deleted!");
+			System.err.println("Record could not be updated!");
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateFilmByKeyword(String keyword, String title, String desc, String releaseYear, int langID, 
+			int rentDur, double rentRate, int length, double repCost) throws SQLException {
+		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, "
+				+ " rental_duration=?,"+" rental_rate=?, length=?, replacement_cost=? "
+				+ " WHERE film.title LIKE ? OR film.description LIKE ? ";
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // Start transaction
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, title);
+			st.setString(2, desc);
+			st.setString(3, releaseYear);
+			st.setInt(4, langID);
+			st.setInt(5, rentDur);
+			st.setDouble(6, rentRate);
+			st.setInt(7, length);
+			st.setDouble(8, repCost);
+			st.setString(9, keyword);
+			st.setString(10, keyword);
+			
+			int uc = st.executeUpdate();
+			if (uc != 1) {
+				System.err.println("Record could not be updated!");
+				conn.rollback();
+			}
+			else {
+				System.out.println("Record has been updated.");
+			}
+			
+			conn.commit();
+			st.close();
+			conn.close();
+		} catch (SQLException e) {
+			conn.rollback();
+			System.err.println("Record could not be updated!");
 			e.printStackTrace();
 		}
 	}
