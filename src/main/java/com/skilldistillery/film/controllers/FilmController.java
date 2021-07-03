@@ -13,9 +13,9 @@ import com.skilldistillery.film.dao.FilmDAO;
 public class FilmController {
 	
 	//MAKE SURE TO UNCOMMENT
-//	//	TODO: 
-//	@Autowired
-//	FilmDAO filmDAO;
+	//	TODO: 
+	@Autowired
+	FilmDAO filmDAO;
 
 	@RequestMapping(path = {"/", "home.do"})
 	public String index() {
