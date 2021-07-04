@@ -22,10 +22,11 @@
 		Enter Film Query Here:
 		<input type="text" name="search" size="25"/> 
 		<input type="submit" value="Get Film Info" />
+	</form>
 	<br>
 	<br>
 	<form action="AddFilm.do" method="GET">
-		Enter Film Query Here:
+		Add a Film:
 		<input type="text" name="add" size="25"/> 
 		<input type="submit" value="Add Film" />
 	</form> 

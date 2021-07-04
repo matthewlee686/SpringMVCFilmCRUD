@@ -15,7 +15,20 @@ Actors should show with this
 
 -->
 
-${film.title}
+Film ID: ${film.id} 
+<br>
+Title: ${film.title} 
+<br> 
+Year Released: ${film.desc} 
+<br>
+Release Year: ${film.releaseYear} 
+<br>
+
+Starring: 
+<ul>
+<li> ${film.actors} </li>
+</ul>
+
 
 	<!-- Link for Delete Film -->
 <p><a href="deleteFilm.html">Delete the Film</a></p>
