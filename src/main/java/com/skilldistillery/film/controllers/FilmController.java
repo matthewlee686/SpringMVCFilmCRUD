@@ -45,7 +45,7 @@ public class FilmController {
 		
 		
 		//Set View for .jsp File
-		mv.setViewName("WEB-INF/filmResults.jsp");
+		mv.setViewName("WEB-INF/idResults.jsp");
 		
 		return mv;
 	}
@@ -64,26 +64,54 @@ public class FilmController {
 		//Instance new Film and Add to mv.addObject to map to .jsp File
 		try {
 			List<Film> films = filmDAO.findFilmByKeyword(query);
-			mv.addObject("film", films);
+			mv.addObject("films", films);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		//Set View for .jsp File
-		mv.setViewName("WEB-INF/filmResults.jsp");
+		mv.setViewName("WEB-INF/searchResults.jsp");
 		
 		return mv;
 	}
 	
-
 	
 	//Add Film
 		//path = "addFilm.do"
 		//params = "addFilm"
 		//method = POST
+	@RequestMapping(path = "AddFilm.do", method = RequestMethod.POST)
+	public ModelAndView addFilm(Film film) {
+		
+		ModelAndView mv = new ModelAndView(); 
+		
+		try {
+			filmDAO.createFilm(film);
+			mv.addObject("film", film);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Set View for .jsp File
+		mv.setViewName("redirect:filmCreated.do");
+		
+		return mv; 
+	}
 	
 	
+	//Add Film Redirect
+		//path = "filmCreated.do"
+		//method = GET
+	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET)
+	public ModelAndView filmCreated() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/idResults.jsp");
+		
+		return mv; 
+	}
 	
 	//Delete Film
 		//path = "deleteFilm.do"

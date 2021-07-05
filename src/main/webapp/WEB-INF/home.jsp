@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +26,7 @@
 		<input type="submit" value="Get Film Info" />
 	</form>
 	<br>
-	<br>
-	<form action="AddFilm.do" method="GET">
-		Add a Film:
-		<input type="text" name="add" size="25"/> 
-		<input type="submit" value="Add Film" />
-	</form> 
+	<p>New Film?<a href="addFilm.jsp">&nbsp;Add Here!</a></p>
 
 
 </body>
