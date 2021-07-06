@@ -108,7 +108,7 @@ public class FilmController {
 	public ModelAndView filmCreated() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/idResults.jsp");
+		mv.setViewName("WEB-INF/addFilmResults.jsp");
 		
 		return mv; 
 	}

@@ -4,17 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update Film Confirmation</title>
+<title>Add Film Results</title>
 </head>
 <body>
 
-<h2>Film Update Results:</h2>
+
+<h2>Film Add Results:</h2>
+
 	<c:choose>
 		<c:when test="${empty film}">
-			<p>Film ${film.id} ${film.title} has been successfully updated</p>
+			<p>Film could not be added</p>
 		</c:when>
 		<c:otherwise>
-			<p>Film could not be updated</p>
+			<p>--Film has been added--</p>
+			<p>Results for New Film Added:</p>
+				<ul>
+					<li>${film.id}</li>
+					<li>${film.title}</li>
+					<li>${film.releaseYear}</li>
+				</ul>
 		</c:otherwise>
 	</c:choose>
 

@@ -25,7 +25,7 @@
 		
 		<!-- Some more input for Film Info -->
 		
-		<p><input type="submit" value="Add Film" /></p>
+		<p><input type="submit" value = "Add Film"/></p>
 	</form> 
 
 
