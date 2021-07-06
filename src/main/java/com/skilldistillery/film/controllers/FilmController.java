@@ -117,12 +117,80 @@ public class FilmController {
 		//path = "deleteFilm.do"
 		//params = "deleteFilm"
 		//method = POST
+	@RequestMapping(path = "deleteFilm.do", params = "delete", method = RequestMethod.POST)
+	public ModelAndView deleteFilmById(@RequestParam("delete") int filmId) {
+		
+		ModelAndView mv = new ModelAndView(); 
+		
+		try {
+			Film film = filmDAO.findFilmById(filmId);
+			filmDAO.deleteFilmByID(filmId);
+			mv.addObject("film", film);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Set View
+		mv.setViewName("redirect:filmDeleted.do");
+		
+		return mv; 
+		
+	}
+	
+//	@RequestMapping(path = "deleteFilm.do", params = "delete", method = RequestMethod.POST)
+//	public ModelAndView deleteFilmByQuery(@RequestParam("delete") String query) {
+//		
+//		ModelAndView mv = new ModelAndView(); 
+//		
+//		try {
+//			List<Film> film = filmDAO.findFilmByKeyword(query);
+//			filmDAO.deleteFilmByKeyword(query);
+//			mv.addObject("film", film);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		//Set View
+//		mv.setViewName("redirect:deleteFilmSearchResults.jsp");
+//		
+//		return mv; 
+//		
+//	}
+//	
+	
+	
+	//Mapping for Film Results if you want to Delete
+	
+	
+	
+	
+	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
+	public ModelAndView filmDeletedConfirmation() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/deleteFilmResults.jsp");
+		
+		return mv; 
+	}
+	
 	
 	
 	//Update/Edit Film 
 		//path = "editFilm.do"
 		//params = "editFilm"
 		//method = POST
+	@RequestMapping(path = "editFilm.do", params = "editFilm", method = RequestMethod.POST)
+	public ModelAndView updateFilm() {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		
+		return mv; 
+	}
 	
 	
 }//class

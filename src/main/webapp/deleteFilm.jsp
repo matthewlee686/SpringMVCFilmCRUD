@@ -9,12 +9,12 @@
 </head>
 <body>
 	<h2>Delete the film with the film ID</h2>
-	<form action="deleteFilm.do" method="GET">
+	<form action="deleteFilm.do" method="POST">
 		Enter Film ID: <input type="text" name="delete" size="4" /> <input
 			type="submit" value="Delete Film" />
 	</form>
 	<h2>Delete the film with a keyword</h2>
-	<form action="deleteFilm.do" method="GET">
+	<form action="deleteFilm.do" method="POST">
 		Enter Film ID: <input type="text" name="delete" size="15" /> <input
 			type="submit" value="Delete Film" />
 	</form>
