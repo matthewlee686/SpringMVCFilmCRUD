@@ -181,16 +181,39 @@ public class FilmController {
 		//path = "editFilm.do"
 		//params = "editFilm"
 		//method = POST
-	@RequestMapping(path = "editFilm.do", params = "editFilm", method = RequestMethod.POST)
-	public ModelAndView updateFilm() {
+	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
+	public ModelAndView updateFilm(@RequestParam("filmId") int filmId) {
 		
 		ModelAndView mv = new ModelAndView();
 		
+		try {
+			Film film = filmDAO.findFilmById(filmId);
+			film = filmDAO.updateFilmByID(film, filmId);
+			mv.addObject("film", film);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		//Set View for .jsp File
+		mv.setViewName("redirect:update.do");
 		
 		
 		return mv; 
 	}
+	
+	//update.do
+	//method = GET
+	@RequestMapping(path = "update.do", method = RequestMethod.GET)
+	public ModelAndView filmUpdated() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/updateFilmResults.jsp");
+		
+		return mv; 
+	}
+	
+	
 	
 	
 }//class

@@ -11,7 +11,7 @@
 <h2>Deletion Results:</h2>
 	<c:choose>
 		<c:when test="${ empty film}">
-			<p>Film ${film.id} ${film.title} has been successfully deleted</p>
+			<p>Film ${film.title} has been successfully deleted</p>
 		</c:when>
 		<c:otherwise>
 			<p>Film could not be deleted</p>

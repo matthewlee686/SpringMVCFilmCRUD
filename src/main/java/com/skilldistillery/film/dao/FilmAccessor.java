@@ -14,9 +14,7 @@ public interface FilmAccessor {
 	  public Film createFilm(Film film) throws SQLException;
 	  public void deleteFilmByID(int filmID) throws SQLException;
 	  public void deleteFilmByKeyword(String keyword) throws SQLException;
-	  public void updateFilmByID(int filmID, String title, String desc, String releaseYear, int langID, 
-				int rentDur, double rentRate, int length, double repCost) throws SQLException;
-	  public void updateFilmByKeyword(String keyword, String title, String desc, String releaseYear, int langID, 
-				int rentDur, double rentRate, int length, double repCost) throws SQLException;
+	  public Film updateFilmByID(Film film, int filmId) throws SQLException;
+	  public Film updateFilmByKeyword(Film film, String keyword) throws SQLException;
 
 }
