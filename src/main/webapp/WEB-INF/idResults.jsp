@@ -16,7 +16,7 @@
 		<br>
 		Title: ${film.title} 
 		<br> 
-		Year Released: ${film.desc} 
+		Description: ${film.desc} 
 		<br>
 		Release Year: ${film.releaseYear} 
 		<br>
@@ -39,7 +39,7 @@
 	<!-- Link for Edit Film Info-->
 <p><a href="editFilm.jsp">Edit the Film</a></p>
 
-<p><a href="/WEB-INF/home.jsp">Go Home</a></p>
+<p><a href="home.jsp">Go Home</a></p>
 
 
 

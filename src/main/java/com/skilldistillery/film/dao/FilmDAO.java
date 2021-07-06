@@ -259,9 +259,8 @@ public class FilmDAO implements FilmAccessor {
 		}
 	}
 
-	public void updateFilmByID(int filmID, String title, String desc, String releaseYear, int langID, int rentDur,
-			double rentRate, int length, double repCost) throws SQLException {
-		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, " + " rental_duration=?,"
+	public Film updateFilmByID(Film film, int filmId) throws SQLException {
+		String sql = "UPDATE film SET title=?, description=?, release_year=?, rental_duration=?,"
 				+ " rental_rate=?, length=?, replacement_cost=? " + " WHERE film.id=? ";
 
 		Connection conn = null;
@@ -269,15 +268,13 @@ public class FilmDAO implements FilmAccessor {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // Start transaction
 			PreparedStatement st = conn.prepareStatement(sql);
-			st.setString(1, title);
-			st.setString(2, desc);
-			st.setString(3, releaseYear);
-			st.setInt(4, langID);
-			st.setInt(5, rentDur);
-			st.setDouble(6, rentRate);
-			st.setInt(7, length);
-			st.setDouble(8, repCost);
-			st.setInt(9, filmID);
+			st.setString(1, film.getTitle());
+			st.setString(2, film.getDesc());
+			st.setString(3, film.getReleaseYear());
+			st.setInt(5, film.getRentalDuration());
+			st.setDouble(6, film.getRentalRate());
+			st.setString(7, film.getLength());
+			st.setDouble(8, film.getReplaceCost());
 
 			int uc = st.executeUpdate();
 			if (uc != 1) {
@@ -295,11 +292,11 @@ public class FilmDAO implements FilmAccessor {
 			System.err.println("Record could not be updated!");
 			e.printStackTrace();
 		}
+		return film;
 	}
 
-	public void updateFilmByKeyword(String keyword, String title, String desc, String releaseYear, int langID,
-			int rentDur, double rentRate, int length, double repCost) throws SQLException {
-		String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, " + " rental_duration=?,"
+	public Film updateFilmByKeyword(Film film, String keyword) throws SQLException {
+		String sql = "UPDATE film SET title=?, description=?, release_year=?, rental_duration=?,"
 				+ " rental_rate=?, length=?, replacement_cost=? "
 				+ " WHERE film.title LIKE ? OR film.description LIKE ? ";
 
@@ -308,14 +305,13 @@ public class FilmDAO implements FilmAccessor {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // Start transaction
 			PreparedStatement st = conn.prepareStatement(sql);
-			st.setString(1, title);
-			st.setString(2, desc);
-			st.setString(3, releaseYear);
-			st.setInt(4, langID);
-			st.setInt(5, rentDur);
-			st.setDouble(6, rentRate);
-			st.setInt(7, length);
-			st.setDouble(8, repCost);
+			st.setString(1, film.getTitle());
+			st.setString(2, film.getDesc());
+			st.setString(3, film.getReleaseYear());
+			st.setInt(5, film.getRentalDuration());
+			st.setDouble(6, film.getRentalRate());
+			st.setString(7, film.getLength());
+			st.setDouble(8, film.getReplaceCost());
 			st.setString(9, keyword);
 			st.setString(10, keyword);
 
@@ -335,6 +331,7 @@ public class FilmDAO implements FilmAccessor {
 			System.err.println("Record could not be updated!");
 			e.printStackTrace();
 		}
+		return film;
 	}
 
 }// Class
