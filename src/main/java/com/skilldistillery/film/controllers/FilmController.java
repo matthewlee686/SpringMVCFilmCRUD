@@ -108,7 +108,7 @@ public class FilmController {
 	public ModelAndView filmCreated() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/addFilmResults.jsp");
+		mv.setViewName("addFilmResults.jsp");
 		
 		return mv; 
 	}
@@ -170,7 +170,7 @@ public class FilmController {
 	public ModelAndView filmDeletedConfirmation() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/deleteFilmResults.jsp");
+		mv.setViewName("deleteFilmResults.jsp");
 		
 		return mv; 
 	}
@@ -182,7 +182,7 @@ public class FilmController {
 		//params = "editFilm"
 		//method = POST
 	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
-	public ModelAndView updateFilm(@RequestParam("filmId") int filmId) {
+	public ModelAndView updateFilm(Integer filmId) {
 		
 		ModelAndView mv = new ModelAndView();
 		

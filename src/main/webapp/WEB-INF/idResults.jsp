@@ -6,21 +6,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <title>Film ID Results</title>
 </head>
 <body>
 
 	<c:choose>
-		<c:when test="${ empty film}">
+		<c:when test="${empty film.id}">
 	
 		<p>No Films found with that ID</p>
 
 		</c:when>
 		<c:otherwise>
-		<h3>Film Info:</h3>
-		Film ID: ${film.id} 
+	Film ID: ${film.id} 
 		<br>
 		Title: ${film.title} 
 		<br> 
@@ -28,15 +25,11 @@
 		<br>
 		Release Year: ${film.releaseYear} 
 		<br>
-		<br>
-		<h3>Starring:</h3>
-			<c:forEach var="actor" items="${film.actors}">
-				<ul>
-					<li><b>Actor ID:</b> ${actor.id}
-					<li><b>First Name:</b> ${actor.firstName}</li>
-					<li><b>Last Name:</b> ${actor.lastName}</li>
-				</ul>
-			</c:forEach>
+		
+		Starring: 
+		<ul>
+				<li>${film.actors}</li>
+			</ul>
 			<br>
 
 		</c:otherwise>
@@ -48,7 +41,9 @@
 	</p>
 
 	<!-- Link for Edit Film Info-->
-	<p><a href="updateFilmForm.html">Edit the Film</a></p>
+	<p>
+		<a href="updateFilmForm.html">Edit the Film</a>
+	</p>
 
 	<p>
 		<a href="home.jsp">Go Home</a>

@@ -18,6 +18,6 @@
 		</c:otherwise>
 	</c:choose>
 
-	<a href="home.jsp">Go Home</a><br/>
+	<a href="WEB-INF/home.jsp">Go Home</a><br/>
 </body>
 </html>

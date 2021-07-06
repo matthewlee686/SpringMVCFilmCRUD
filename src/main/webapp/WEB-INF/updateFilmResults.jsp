@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 
 <h2>Film Update Results:</h2>
 	<c:choose>
-		<c:when test="${empty film}">
+		<c:when test="${! empty film}">
 			<p>Film ${film.id} ${film.title} has been successfully updated</p>
 		</c:when>
 		<c:otherwise>

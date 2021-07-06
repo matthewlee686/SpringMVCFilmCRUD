@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 	<c:choose>
 		<c:when test="${empty film}">
 			<p>Film could not be added</p>
+			
 		</c:when>
 		<c:otherwise>
 			<p>--Film has been added--</p>
@@ -25,6 +27,8 @@
 				</ul>
 		</c:otherwise>
 	</c:choose>
+	
+	<a href="WEB-INF/home.jsp">Go Home</a><br/>
 
 </body>
 </html>
