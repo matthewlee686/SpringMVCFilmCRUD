@@ -34,7 +34,7 @@
 <p><a href="editFilm.jsp">Edit a Film</a></p>
 	
 	<!--  Go to Home Page -->
-<p><a href="/WEB-INF/home.jsp">Go Home</a></p>
+<p><a href="home.jsp">Go Home</a></p>
 
 
 </body>
