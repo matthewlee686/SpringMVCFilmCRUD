@@ -41,13 +41,7 @@
 	</p>
 
 	<!-- Link for Edit Film Info-->
-<<<<<<< HEAD
-<p><a href="updateFilmForm.html">Edit the Film</a></p>
-=======
-	<p>
-		<a href="editFilm.jsp">Edit the Film</a>
-	</p>
->>>>>>> fa121e539488433be30506f506d747f4ea9046e2
+	<p><a href="updateFilmForm.html">Edit the Film</a></p>
 
 	<p>
 		<a href="home.jsp">Go Home</a>
